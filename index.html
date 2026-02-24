@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Начни ремонт здесь Уфа — рассчитайте бюджет ремонта</title>
-<meta name="description" content="Независимый калькулятор ремонта в Уфе. Расчёт на основе анализа рыночных предложений 2026 года. Без передачи контактов подрядчикам.">
+<meta name="description" content="Независимый калькулятор ремонта в Уфе. Расчёт на основе анализа рынка 2026 года. Без передачи контактов подрядчикам.">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
---bg:#f3f7fb;
+--bg:#f4f8fb;
 --card:#ffffff;
---text:#334155;
+--text:#1e293b;
 --muted:#64748b;
 --primary:#10b981;
+--primary-dark:#059669;
 --accent:#3b82f6;
 --border:#e2e8f0;
---shadow:0 20px 50px rgba(0,0,0,0.06);
 }
+
+*{box-sizing:border-box}
 
 body{
 margin:0;
@@ -28,69 +30,97 @@ background:var(--bg);
 color:var(--text);
 }
 
+/* HEADER */
+
 header{
 background:white;
-padding:20px 40px;
+padding:18px 24px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 5px 25px rgba(0,0,0,0.04);
+box-shadow:0 4px 20px rgba(0,0,0,0.04);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-weight:700;
+font-size:16px;
 }
 
 nav a{
-margin-left:24px;
+margin-left:20px;
 text-decoration:none;
 color:var(--muted);
 font-weight:500;
+transition:.3s;
 }
 
 nav a:hover{
 color:var(--primary);
 }
 
+/* HERO */
+
 .hero{
 text-align:center;
-padding:60px 20px 10px;
+padding:80px 20px 60px;
+background:linear-gradient(135deg,#e0f2fe 0%, #f0fdf4 100%);
+animation:fadeIn 1s ease;
 }
 
 .hero h1{
-font-size:34px;
-margin-bottom:12px;
+font-size:36px;
+margin-bottom:16px;
 }
 
 .hero p{
-color:var(--muted);
 max-width:650px;
 margin:auto;
+color:var(--muted);
+font-size:16px;
 }
+
+/* CALCULATOR */
 
 .calculator{
 background:var(--card);
 max-width:760px;
-margin:40px auto;
+margin:-40px auto 40px;
 padding:40px;
 border-radius:28px;
-box-shadow:var(--shadow);
+box-shadow:0 30px 60px rgba(0,0,0,0.07);
+animation:slideUp 0.8s ease;
 }
 
 .row{
-margin-bottom:24px;
+margin-bottom:22px;
 }
 
 label.title{
 font-weight:600;
-margin-bottom:10px;
+margin-bottom:8px;
 display:block;
 }
 
-input[type="number"], select{
+input, select{
 width:100%;
 padding:14px;
 border-radius:14px;
 border:1px solid var(--border);
 font-size:15px;
 background:#f8fafc;
+transition:.3s;
 }
+
+input:focus, select:focus{
+outline:none;
+border-color:var(--primary);
+background:white;
+}
+
+/* EXTRAS */
 
 .extras{
 display:flex;
@@ -100,25 +130,25 @@ gap:14px;
 
 .extra-item{
 display:flex;
-align-items:center;
 justify-content:space-between;
-padding:18px 20px;
+align-items:center;
+padding:16px 20px;
 border-radius:18px;
 background:#f8fafc;
 border:1px solid var(--border);
 cursor:pointer;
-transition:0.3s;
+transition:.3s;
 }
 
 .extra-item:hover{
 transform:translateY(-2px);
-box-shadow:0 10px 20px rgba(0,0,0,0.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
 .extra-left{
 display:flex;
 align-items:center;
-gap:14px;
+gap:12px;
 }
 
 .extra-item input{
@@ -133,7 +163,7 @@ border:2px solid #cbd5e1;
 display:flex;
 align-items:center;
 justify-content:center;
-transition:0.3s;
+transition:.3s;
 }
 
 .custom-check::after{
@@ -142,7 +172,7 @@ width:10px;
 height:10px;
 background:var(--primary);
 opacity:0;
-transition:0.3s;
+transition:.3s;
 border-radius:3px;
 }
 
@@ -154,13 +184,10 @@ border-color:var(--primary);
 opacity:1;
 }
 
-.price{
-font-weight:500;
-color:#475569;
-}
+/* BUTTON */
 
 button{
-margin-top:25px;
+margin-top:20px;
 width:100%;
 padding:16px;
 background:var(--primary);
@@ -170,12 +197,15 @@ border-radius:30px;
 font-size:16px;
 font-weight:600;
 cursor:pointer;
-transition:0.3s;
+transition:.3s;
 }
 
 button:hover{
-background:#059669;
+background:var(--primary-dark);
+transform:translateY(-2px);
 }
+
+/* RESULT */
 
 .result{
 margin-top:30px;
@@ -183,34 +213,29 @@ text-align:center;
 font-size:22px;
 font-weight:600;
 opacity:0;
-transition:0.5s;
+transform:translateY(10px);
+transition:.4s ease;
 }
 
-.note{
-text-align:center;
-font-size:14px;
-color:var(--muted);
-margin-top:15px;
-}
+/* TELEGRAM BUTTONS */
 
 .telegram-buttons{
 margin-top:30px;
 display:flex;
 flex-direction:column;
-gap:14px;
+gap:12px;
 align-items:center;
 }
 
 .telegram-btn{
-display:inline-block;
-padding:14px 30px;
+padding:14px 28px;
 background:var(--accent);
 color:white;
 border-radius:30px;
 text-decoration:none;
 font-weight:600;
-transition:0.3s;
-width:280px;
+transition:.3s;
+width:260px;
 text-align:center;
 }
 
@@ -219,62 +244,75 @@ background:#2563eb;
 }
 
 .telegram-channel-btn{
-display:inline-block;
-padding:14px 30px;
+padding:14px 28px;
 background:#e0f2fe;
 color:#0369a1;
 border-radius:30px;
 text-decoration:none;
 font-weight:600;
-transition:0.3s;
-width:280px;
-text-align:center;
 border:1px solid #bae6fd;
+transition:.3s;
+width:260px;
+text-align:center;
 }
 
 .telegram-channel-btn:hover{
 background:#bae6fd;
 }
 
+/* TRUST */
+
 .trust{
-max-width:760px;
-margin:50px auto;
+max-width:700px;
+margin:60px auto;
 text-align:center;
 color:var(--muted);
-font-size:15px;
-line-height:1.6;
 padding:0 20px;
 }
 
-footer{
-text-align:center;
-padding:40px 20px;
-font-size:14px;
-color:#94a3b8;
-}
+/* FLOATING BUTTON */
 
 .floating-telegram{
 position:fixed;
-right:25px;
-bottom:25px;
+right:20px;
+bottom:20px;
 width:60px;
 height:60px;
-background:#3b82f6;
+background:var(--accent);
 color:white;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:24px;
+font-size:22px;
 text-decoration:none;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-transition:0.3s;
-z-index:999;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+animation:pulse 2s infinite;
 }
 
-.floating-telegram:hover{
-transform:scale(1.1);
-background:#2563eb;
+/* ANIMATIONS */
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+@keyframes slideUp{
+from{opacity:0; transform:translateY(30px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(59,130,246,0.4)}
+70%{box-shadow:0 0 0 15px rgba(59,130,246,0)}
+100%{box-shadow:0 0 0 0 rgba(59,130,246,0)}
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+.hero h1{font-size:26px}
+.calculator{padding:25px}
 }
 </style>
 </head>
@@ -282,7 +320,7 @@ background:#2563eb;
 <body>
 
 <header>
-<div><strong>Начни ремонт здесь Уфа</strong></div>
+<div class="logo">Начни ремонт здесь Уфа</div>
 <nav>
 <a href="about.html">О проекте</a>
 <a href="blog.html">Блог</a>
@@ -291,7 +329,7 @@ background:#2563eb;
 
 <section class="hero">
 <h1>Рассчитайте бюджет ремонта за 30 секунд</h1>
-<p>Расчёт основан на анализе предложений рынка Уфы 2026 года. Контакты не передаются строительным компаниям.</p>
+<p>Независимый расчёт на основе анализа рынка Уфы 2026 года. Без передачи контактов строительным компаниям.</p>
 </section>
 
 <section class="calculator">
@@ -328,7 +366,7 @@ background:#2563eb;
 <div class="custom-check"></div>
 <span>Дизайн-проект</span>
 </div>
-<span class="price">+80 000 ₽</span>
+<span>+80 000 ₽</span>
 </label>
 
 <label class="extra-item">
@@ -337,7 +375,7 @@ background:#2563eb;
 <div class="custom-check"></div>
 <span>Демонтаж</span>
 </div>
-<span class="price">+40 000 ₽</span>
+<span>+40 000 ₽</span>
 </label>
 
 <label class="extra-item">
@@ -346,7 +384,7 @@ background:#2563eb;
 <div class="custom-check"></div>
 <span>Усиленная электрика</span>
 </div>
-<span class="price">+60 000 ₽</span>
+<span>+60 000 ₽</span>
 </label>
 
 </div>
@@ -356,35 +394,28 @@ background:#2563eb;
 
 <div class="result" id="result"></div>
 
-<div class="note">
-Материалы в среднем составляют около 80% от стоимости работ.
-</div>
-
 <div class="telegram-buttons">
 <a href="https://t.me/koblitskiy" target="_blank" class="telegram-btn">
-Написать лично в Telegram →
+Написать лично →
 </a>
 
 <a href="https://t.me/startremont" target="_blank" class="telegram-channel-btn">
-Перейти в Telegram-канал →
+Telegram-канал →
 </a>
 </div>
 
 </section>
 
 <section class="trust">
-Это независимая информационная платформа.  
-Мы не передаём контакты строительным компаниям.  
-Наша цель — помочь вам понять реальный бюджет ремонта в Уфе.
+Это независимая платформа. Мы не передаём контакты подрядчикам.  
+Наша задача — помочь вам понять реальный бюджет ремонта.
 </section>
 
-<footer>
-© 2026 Начни ремонт здесь Уфа • Независимая платформа
+<footer style="text-align:center;padding:40px 20px;color:#94a3b8;">
+© 2026 Начни ремонт здесь Уфа
 </footer>
 
-<a href="https://t.me/koblitskiy" target="_blank" class="floating-telegram">
-💬
-</a>
+<a href="https://t.me/koblitskiy" target="_blank" class="floating-telegram">💬</a>
 
 <script>
 function calculate(){
@@ -407,14 +438,18 @@ checked.forEach(el=>extras+=parseInt(el.value));
 let total=workCost+materials+extras;
 
 let result=document.getElementById("result");
+
 result.style.opacity=0;
+result.style.transform="translateY(10px)";
 
 setTimeout(()=>{
 result.innerHTML=
 "Работы: "+workCost.toLocaleString()+" ₽<br>"+
 "Материалы: "+materials.toLocaleString()+" ₽<br><br>"+
 "<strong>Итого: "+total.toLocaleString()+" ₽</strong>";
+
 result.style.opacity=1;
+result.style.transform="translateY(0)";
 },300);
 }
 </script>
