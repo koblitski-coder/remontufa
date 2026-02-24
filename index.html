@@ -4,36 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Начни ремонт здесь Уфа — калькулятор ремонта 2026</title>
-<meta name="description" content="Рассчитайте стоимость ремонта квартиры в Уфе за 30 секунд. Новостройка и вторичка. Независимый расчёт без передачи контактов.">
+<title>Начни ремонт здесь Уфа — рассчитайте бюджет ремонта</title>
+<meta name="description" content="Независимый калькулятор ремонта в Уфе. Расчёт на основе анализа рыночных предложений 2026 года. Без передачи контактов подрядчикам.">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Начни ремонт здесь Уфа">
-<meta property="og:description" content="Независимый калькулятор ремонта квартиры в Уфе.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="logo.png">
-<meta property="og:locale" content="ru_RU">
-
-<link rel="icon" type="image/png" href="logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* ===== БРЕНД-ПЕРЕМЕННЫЕ ===== */
-
 :root{
---bg:#f4f7fb;
+--bg:#f3f7fb;
 --card:#ffffff;
 --text:#334155;
 --muted:#64748b;
 --primary:#10b981;
---primary-dark:#059669;
 --accent:#3b82f6;
 --border:#e2e8f0;
 --shadow:0 20px 50px rgba(0,0,0,0.06);
 }
-
-/* ===== БАЗА ===== */
 
 body{
 margin:0;
@@ -43,32 +29,12 @@ color:var(--text);
 }
 
 header{
-background:var(--card);
-padding:18px 40px;
+background:white;
+padding:20px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 box-shadow:0 5px 25px rgba(0,0,0,0.04);
-}
-
-.logo-wrap{
-display:flex;
-align-items:center;
-gap:14px;
-}
-
-.logo-wrap svg{
-height:42px;
-transition:0.3s;
-}
-
-.logo-wrap svg:hover{
-transform:scale(1.05);
-}
-
-.logo-text{
-font-weight:700;
-font-size:18px;
 }
 
 nav a{
@@ -76,46 +42,39 @@ margin-left:24px;
 text-decoration:none;
 color:var(--muted);
 font-weight:500;
-transition:0.3s;
 }
 
 nav a:hover{
 color:var(--primary);
 }
 
-/* ===== HERO ===== */
-
 .hero{
 text-align:center;
-padding:80px 20px 20px;
-animation:fadeIn 1s ease forwards;
-opacity:0;
+padding:60px 20px 10px;
 }
 
 .hero h1{
-font-size:36px;
+font-size:34px;
 margin-bottom:12px;
 }
 
 .hero p{
 color:var(--muted);
-max-width:600px;
+max-width:650px;
 margin:auto;
 }
 
-/* ===== КАЛЬКУЛЯТОР ===== */
-
 .calculator{
 background:var(--card);
-max-width:750px;
-margin:50px auto;
+max-width:760px;
+margin:40px auto;
 padding:40px;
 border-radius:28px;
 box-shadow:var(--shadow);
 }
 
 .row{
-margin-bottom:22px;
+margin-bottom:24px;
 }
 
 label.title{
@@ -143,7 +102,7 @@ gap:14px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:18px;
+padding:18px 20px;
 border-radius:18px;
 background:#f8fafc;
 border:1px solid var(--border);
@@ -162,10 +121,14 @@ align-items:center;
 gap:14px;
 }
 
+.extra-item input{
+display:none;
+}
+
 .custom-check{
 width:22px;
 height:22px;
-border-radius:50%;
+border-radius:6px;
 border:2px solid #cbd5e1;
 display:flex;
 align-items:center;
@@ -177,14 +140,10 @@ transition:0.3s;
 content:"";
 width:10px;
 height:10px;
-border-radius:50%;
 background:var(--primary);
 opacity:0;
 transition:0.3s;
-}
-
-.extra-item input{
-display:none;
+border-radius:3px;
 }
 
 .extra-item input:checked + .custom-check{
@@ -195,14 +154,9 @@ border-color:var(--primary);
 opacity:1;
 }
 
-.extra-item input:checked ~ .price{
-color:var(--primary);
-font-weight:600;
-}
-
 .price{
 font-weight:500;
-color:var(--muted);
+color:#475569;
 }
 
 button{
@@ -220,7 +174,7 @@ transition:0.3s;
 }
 
 button:hover{
-background:var(--primary-dark);
+background:#059669;
 }
 
 .result{
@@ -239,9 +193,16 @@ color:var(--muted);
 margin-top:15px;
 }
 
+.telegram-buttons{
+margin-top:30px;
+display:flex;
+flex-direction:column;
+gap:14px;
+align-items:center;
+}
+
 .telegram-btn{
 display:inline-block;
-margin-top:25px;
 padding:14px 30px;
 background:var(--accent);
 color:white;
@@ -249,21 +210,41 @@ border-radius:30px;
 text-decoration:none;
 font-weight:600;
 transition:0.3s;
+width:280px;
+text-align:center;
 }
 
 .telegram-btn:hover{
 background:#2563eb;
 }
 
-/* ===== АНИМАЦИЯ ===== */
-
-@keyframes fadeIn{
-to{
-opacity:1;
+.telegram-channel-btn{
+display:inline-block;
+padding:14px 30px;
+background:#e0f2fe;
+color:#0369a1;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+width:280px;
+text-align:center;
+border:1px solid #bae6fd;
 }
+
+.telegram-channel-btn:hover{
+background:#bae6fd;
 }
 
-/* ===== FOOTER ===== */
+.trust{
+max-width:760px;
+margin:50px auto;
+text-align:center;
+color:var(--muted);
+font-size:15px;
+line-height:1.6;
+padding:0 20px;
+}
 
 footer{
 text-align:center;
@@ -272,54 +253,45 @@ font-size:14px;
 color:#94a3b8;
 }
 
-@media(max-width:768px){
-header{
-padding:15px 20px;
-flex-direction:column;
-gap:10px;
-}
-nav a{
-margin-left:12px;
-}
-.logo-wrap svg{
-height:36px;
-}
-.hero h1{
-font-size:28px;
-}
+.floating-telegram{
+position:fixed;
+right:25px;
+bottom:25px;
+width:60px;
+height:60px;
+background:#3b82f6;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+transition:0.3s;
+z-index:999;
 }
 
+.floating-telegram:hover{
+transform:scale(1.1);
+background:#2563eb;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<div class="logo-wrap">
-
-<!-- SVG ЛОГО -->
-<svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="5" y="5" width="70" height="70" rx="10" stroke="#a8a29e" stroke-width="4"/>
-<line x1="40" y1="5" x2="40" y2="75" stroke="#a8a29e" stroke-width="4"/>
-<line x1="5" y1="40" x2="75" y2="40" stroke="#a8a29e" stroke-width="4"/>
-<rect x="80" y="45" width="35" height="45" rx="8" stroke="#a8a29e" stroke-width="4"/>
-<text x="90" y="75" font-size="28" fill="#a8a29e">₽</text>
-</svg>
-
-<div class="logo-text">Начни ремонт здесь Уфа</div>
-</div>
-
+<div><strong>Начни ремонт здесь Уфа</strong></div>
 <nav>
 <a href="about.html">О проекте</a>
 <a href="blog.html">Блог</a>
 </nav>
-
 </header>
 
 <section class="hero">
 <h1>Рассчитайте бюджет ремонта за 30 секунд</h1>
-<p>Простой и независимый расчёт для новостроек и вторичного жилья в Уфе.</p>
+<p>Расчёт основан на анализе предложений рынка Уфы 2026 года. Контакты не передаются строительным компаниям.</p>
 </section>
 
 <section class="calculator">
@@ -348,7 +320,6 @@ font-size:28px;
 
 <div class="row">
 <label class="title">Дополнительно</label>
-
 <div class="extras">
 
 <label class="extra-item">
@@ -389,17 +360,31 @@ font-size:28px;
 Материалы в среднем составляют около 80% от стоимости работ.
 </div>
 
-<div style="text-align:center;">
-<a href="https://t.me/@koblitskiy" class="telegram-btn">
-Получить персональный расчёт в Telegram
+<div class="telegram-buttons">
+<a href="https://t.me/koblitskiy" target="_blank" class="telegram-btn">
+Написать лично в Telegram →
+</a>
+
+<a href="https://t.me/startremont" target="_blank" class="telegram-channel-btn">
+Перейти в Telegram-канал →
 </a>
 </div>
 
 </section>
 
+<section class="trust">
+Это независимая информационная платформа.  
+Мы не передаём контакты строительным компаниям.  
+Наша цель — помочь вам понять реальный бюджет ремонта в Уфе.
+</section>
+
 <footer>
 © 2026 Начни ремонт здесь Уфа • Независимая платформа
 </footer>
+
+<a href="https://t.me/koblitskiy" target="_blank" class="floating-telegram">
+💬
+</a>
 
 <script>
 function calculate(){
@@ -422,7 +407,6 @@ checked.forEach(el=>extras+=parseInt(el.value));
 let total=workCost+materials+extras;
 
 let result=document.getElementById("result");
-
 result.style.opacity=0;
 
 setTimeout(()=>{
