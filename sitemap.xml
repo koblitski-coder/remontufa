@@ -2,15 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://yourdomain.ru/</loc>
-</url>
-
-<url>
-<loc>https://yourdomain.ru/about.html</loc>
-</url>
-
-<url>
-<loc>https://yourdomain.ru/blog.html</loc>
+<loc>https://remontufa.vercel.app/</loc>
+<lastmod>2026-03-12</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
 </url>
 
 </urlset>
